@@ -30,8 +30,8 @@ import Joke from "./Joke.vue";
 export default {
   data() {
     return {
-      types: ["general", "knock knock", "programing"],
-      chekedTypes: ["general", "knock knock", "programing"]
+      types: ["general", "knock knock", "programming"],
+      chekedTypes: ["general", "knock knock", "programming"]
     };
   },
   methods: mapActions(["initJokes", "addJoke"]),
