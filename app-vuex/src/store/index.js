@@ -12,28 +12,41 @@ const state = {
     ]
 }
 
-const saleProducts = (state) => {
-    console.log(state, "state")
-    var saleProducts = state.products.map(product => {
-        return {
-            name: '--' + product.name + '--',
-            price: product.price / 2
-        }
-    })
-    return saleProducts
+const getters = {
+    saleProducts: (state) => {
+        console.log(state, "state")
+        var saleProducts = state.products.map(product => {
+            return {
+                name: '--' + product.name + '--',
+                price: product.price / 2
+            }
+        })
+        return saleProducts
 
+    }
 }
+
 const mutations = {
-    reducePrice: state => {
+    reducePrice: (state,payload) => {
         state.products.forEach(product => {
-            product.price -= 1
+            product.price -= payload
         })
     }
 }
+
+
+const actions = {
+    reducePrice: (context, params) => {
+        console.log(context, "context")
+        setTimeout(() => {
+            context.commit('reducePrice', params)
+        }, 2000)
+    }
+}
+
 export const store = new Vuex.Store({
     state,
-    getters: {
-        saleProducts
-    },
-    mutations
+    getters,
+    mutations,
+    actions
 })

@@ -13,6 +13,8 @@
 
 
 <script>
+import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   //   props: ['products'],
   //   data(){
@@ -25,26 +27,30 @@ export default {
     products() {
       return this.$store.state.products;
     },
-    saleProducts() {
-      return this.$store.getters.saleProducts;
+    // use mapGetter instead the function of saleProducts
+    ...mapGetters(["saleProducts"]),
+    // saleProducts() {
+    //   return this.$store.getters.saleProducts;
 
-      // var saleProducts = this.$store.state.products.map(product => {
-      //   return {
-      //     name: "--" + product.name + "--",
-      //     price: product.price / 2
-      //   };
-      // });
-      // return saleProducts;
-    }
+    //   // var saleProducts = this.$store.state.products.map(product => {
+    //   //   return {
+    //   //     name: "--" + product.name + "--",
+    //   //     price: product.price / 2
+    //   //   };
+    //   // });
+    //   // return saleProducts;
+    // }
   },
   methods: {
-    reducePrice: function() {
-      //   this.$store.state.products.forEach(product => {
-      //     product.price -= 1;
-      //   });
+    // use mapAction intead of reducePrice function
+    ...mapActions(["reducePrice"]),
+    // reducePrice: function(params) {
+    //   //   this.$store.state.products.forEach(product => {
+    //   //     product.price -= 1;
+    //   //   });
 
-      this.$store.commit("reducePrice");
-    }
+    //   this.$store.dispatch("reducePrice", params);
+    // }
   }
 };
 </script>

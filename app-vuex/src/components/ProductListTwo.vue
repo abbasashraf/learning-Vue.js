@@ -13,7 +13,10 @@
 
 
 <script>
+import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
 export default {
+  
   // props: ["products"],
   // data() {
   //   return {};
@@ -23,17 +26,20 @@ export default {
     products() {
       return this.$store.state.products;
     },
-    saleProducts() {
-      return this.$store.getters.saleProducts;
 
-      // var saleProducts = this.$store.state.products.map(product =>{
-      //   return {
-      //     name : '--' + product.name + '--',
-      //     price: product.price / 2
-      //   }
-      // })
-      // return saleProducts
-    }
+    ...mapGetters(["saleProducts"]),
+    
+    // saleProducts() {
+    //   return this.$store.getters.saleProducts;
+
+    //   // var saleProducts = this.$store.state.products.map(product =>{
+    //   //   return {
+    //   //     name : '--' + product.name + '--',
+    //   //     price: product.price / 2
+    //   //   }
+    //   // })
+    //   // return saleProducts
+    // }
   }
 };
 </script>

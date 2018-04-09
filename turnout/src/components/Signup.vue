@@ -7,7 +7,7 @@
             v-model="email">
             <br>
             <br>
-              <input type="password"
+            <input type="password"
             placeholder="password"
             class="form-control"
             v-model="password">
