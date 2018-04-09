@@ -21,6 +21,7 @@
 import { firebaseApp, eventsRef } from "../firebase";
 import AddEvent from "./AddEvent.vue";
 import EventItem from "./EventItem.vue";
+import { mapState } from "vuex";
 export default {
   methods: {
     signOut() {
@@ -41,7 +42,12 @@ export default {
       console.log(events, "events");
       this.$store.dispatch("setEvents", events.reverse());
     });
-  }
+  },
+  computed: { events: mapState("./../store/index.js", ["events"]) }
+
+  // {
+  //   mapState(['events'])
+  // }
 };
 </script>
 

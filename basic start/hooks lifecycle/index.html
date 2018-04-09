@@ -35,14 +35,14 @@
             },
             // render before the render components
             created() {
-                console.log(' created this.count', this.count)
+                console.log('render before component render', this.count)
                 this.alert()
             },
             mounted() {
-                console.log(' mounted this.count', this.count)
+                console.log('render after component render', this.count)
             },
             updated() {
-                console.log(' updated this.count', this.count)
+                console.log('when compenent update', this.count)
             }
         })
 
