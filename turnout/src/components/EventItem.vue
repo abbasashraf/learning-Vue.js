@@ -1,6 +1,6 @@
 <template>
-  <div class="col-md-4">
-      <div class="event-card">
+  <div class="col-md-4 " >
+      <div class="event-card animated zoomInDown">
           <h4 class="card-title">{{event.title}}</h4>
           <p class="card-text">{{event.description}}</p>
             <ul class="list-group list-group-flush">

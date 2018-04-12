@@ -6,9 +6,15 @@
   <hr>
   <AddEvent/>
   <hr>
-    <div class="col-md-12">
+  <nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="text" aria-label="Search" v-model="search" placeholder="Search by title">
+  </form>
+</nav>
+  <hr>
+    <div class="col-md-12 ">
        <EventItem
-       v-for="(event_item, index) in this.$store.state.events"
+       v-for="(event_item, index) in filterdData"
        :event= "event_item"
         key="index"
        />
@@ -23,6 +29,11 @@ import AddEvent from "./AddEvent.vue";
 import EventItem from "./EventItem.vue";
 import { mapState } from "vuex";
 export default {
+  data() {
+    return {
+      search: ""
+    };
+  },
   methods: {
     signOut() {
       this.$store.dispatch("signOut");
@@ -43,7 +54,14 @@ export default {
       this.$store.dispatch("setEvents", events.reverse());
     });
   },
-  computed: { events: mapState("./../store/index.js", ["events"]) }
+  computed: {
+    events: mapState("./../store/index.js", ["events"]),
+    filterdData: function() {
+      return this.$store.state.events.filter(element => {
+        return element.title.match(this.search)
+      });
+    }
+  }
 
   // {
   //   mapState(['events'])

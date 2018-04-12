@@ -1,9 +1,9 @@
 898
 <template>
-<div>
+<div >
     <h4>Add an Event <input type="checkbox" v-model="showForm"></h4>
-    <div class="form" v-if="showForm">
-        <div class="form-group">
+    <div class="form animated zoomInDown" v-if="showForm">
+        <div class="form-group fadeInLeft">
         <label for="">Title</label>
         <input type="text" v-model="event.title" class="form-control">
     </div>
